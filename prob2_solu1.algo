@@ -1,0 +1,29 @@
+ALGORITHM overlappingArrays
+VAR
+    tab1:INTEGER[5];
+    tab2:INTEGER[5];
+    sum,i,j,k:INTEGER:=0;
+
+
+BEGIN
+
+   FOR i FROM 0 TO 4 DO
+       Read(tab1[i]); // insert array1 from user
+   END_FOR
+
+    FOR i FROM 0 TO 4 DO
+       Read(tab2[i]); // insert array2 from user
+    END_FOR
+
+    FOR j FROM 0 TO tab1.length-1 STEP 1 DO
+        FOR k FROM min TO tab2.length-1 STEP 1 DO
+            //if the two array's values are equal
+            IF (tab1[j] = tab2[k]) THEN
+                //add them to sum
+                sum:= sum + tab1[j] + tab2[k];
+            END_IF
+        END_FOR
+    END_FOR
+ write(sum);
+    
+END

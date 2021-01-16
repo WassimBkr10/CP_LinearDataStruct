@@ -1,0 +1,44 @@
+ALGORITHM overlappingHashTable
+VAR
+    set1:INTEGER[5];
+    set2:INTEGER[5];
+    hash: HASH_TABLE<INTEGER,INTEGER>;
+    sum,i,j,k:INTEGER:=0;
+
+BEGIN
+
+FOR i FROM 0 TO 4 DO
+    Read(tab1[i]); // insert array1 from user
+END_FOR
+
+FOR i FROM 0 TO 4 DO
+    Read(tab2[i]); // insert array2 from user
+END_FOR
+
+// fill hatch table with the first array values and put 1 as count
+FOR j FROM 0 TO tab1.length-1 STEP 1 DO
+    hash.insert(tab1[j],1);
+END_FOR
+
+FOR j FROM 0 TO tab2.length-1 STEP 1 DO
+    //fill the hach table with the seconde array's values and if values are existe..
+    IF (hash.lookup(tab2[j])=true) THEN
+        //put 2 as count in place of 1
+        hash.insert(tab2[j],2); 
+    ELSE
+        //else put 1
+        hash.insert(tab2[j],1);
+    END_IF
+END_FOR
+
+
+FOR k FROM 0 TO tab1.length-1 STEP 1 DO
+    //get all values that have the count =2
+    IF (hash.get(tab1[k])=2) THEN
+        //add them to sum and multiplay them by 2 while they exist in the two arrays 
+        sum:=sum+(tab1[k]*2);
+    END_IF
+END_FOR
+// write the sum value 
+ write(sum);
+END
